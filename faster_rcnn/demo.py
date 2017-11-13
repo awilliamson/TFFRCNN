@@ -1,19 +1,24 @@
-import tensorflow as tf
-import matplotlib.pyplot as plt
-import numpy as np
-import os, sys, cv2
-import argparse
-import os.path as osp
-import glob
-
-this_dir = osp.dirname(__file__)
-print(this_dir)
+# Correct the python path, setting content root as the python root.
+# This should enable imports to work properly
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 from lib.networks.factory import get_network
 from lib.fast_rcnn.config import cfg
 from lib.fast_rcnn.test import im_detect
 from lib.fast_rcnn.nms_wrapper import nms
 from lib.utils.timer import Timer
+
+import tensorflow as tf
+import matplotlib.pyplot as plt
+import numpy as np
+import cv2
+import argparse
+import os.path as osp
+import glob
+
+this_dir = osp.dirname(__file__)
+print(this_dir)
 
 CLASSES = ('__background__',
            'aeroplane', 'bicycle', 'bird', 'boat',
